@@ -107,6 +107,36 @@ hyperfine \
   'NUM_STACKS={n} python3 app.py'
 ```
 
+### Import baseline (isolating import cost)
+
+The apps import many `aws_cdk.aws_*` service modules but exercise only a few
+during synth — mirroring real apps that pull in a large dependency tree but use a
+slice of it. This is the scenario lazy submodule loading is designed to benefit.
+
+Import cost is a **one-time startup cost**: it does not scale with stack or
+resource count, so it looks roughly constant across app-1/app-2/app-3. To measure
+it on its own, shrink the workload to near zero so synthesis time drops out:
+
+```bash
+# Near-zero workload: isolates import + interpreter startup
+hyperfine \
+  --warmup 1 \
+  --runs 5 \
+  --prepare 'rm -rf cdk.out' \
+  'NUM_STACKS=1 RESOURCES_PER_STACK=1 python3 app.py'
+```
+
+For a per-module breakdown of where import time goes:
+
+```bash
+python3 -X importtime app.py 2> importtime.log
+sort -t'|' -k2 -n -r importtime.log | head -30   # slowest imports first
+```
+
+Run the import baseline under different jsii runtime versions (pre-lazy vs. lazy)
+to attribute the startup delta to import behavior, separately from the
+per-resource synthesis cost measured by the full-workload benchmarks above.
+
 ## Comparing apps
 
 ### Generate lazy-loading version (source only)
