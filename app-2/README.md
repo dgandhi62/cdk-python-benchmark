@@ -1,9 +1,9 @@
-# cdk-python-benchmark
+# cdk-python-benchmark — app-2
 
-A CDK (Python) benchmark app that synthesizes **100 stacks** with **500 resources each**
-(50,000 resources total). Each resource is an SSM `StringParameter`, chosen because it
-is self-contained with no cross-resource dependencies, keeping synthesis fast and
-predictable.
+A CDK (Python) benchmark app that synthesizes **100 stacks** with **400 resources
+each** (40,000 resources total). Each resource is an SSM `StringParameter`, chosen
+because it is self-contained with no cross-resource dependencies, keeping
+synthesis fast and predictable.
 
 ## Layout
 
@@ -42,4 +42,4 @@ The stack and resource counts are configurable via environment variables:
 NUM_STACKS=10 RESOURCES_PER_STACK=50 cdk synth
 ```
 
-Defaults: `NUM_STACKS=100`, `RESOURCES_PER_STACK=500`.
+Defaults: `NUM_STACKS=100`, `RESOURCES_PER_STACK=400`.

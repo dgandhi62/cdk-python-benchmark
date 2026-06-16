@@ -6,7 +6,7 @@ import aws_cdk as cdk
 from benchmark.benchmark_stack import BenchmarkStack
 
 # Tunable benchmark parameters (override via environment variables).
-NUM_STACKS = int(os.environ.get("NUM_STACKS", "400"))
+NUM_STACKS = int(os.environ.get("NUM_STACKS", "100"))
 RESOURCES_PER_STACK = int(os.environ.get("RESOURCES_PER_STACK", "400"))
 
 # analytics_reporting=False removes the auto-injected AWS::CDK::Metadata

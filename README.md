@@ -15,9 +15,9 @@ timings (warmup runs, multiple samples, mean ± stddev).
 
 | App   | Stacks | Resources/stack | Total resources |
 |-------|--------|-----------------|-----------------|
-| app-1 | 100    | 400             | 40,000          |
-| app-2 | 400    | 400             | 160,000         |
-| app-3 | 20     | 400             | 8,000           |
+| app-1 | 20     | 400             | 8,000           |
+| app-2 | 100    | 400             | 40,000          |
+| app-3 | 400    | 400             | 160,000         |
 
 Counts default to the values above. They can be overridden per run via the
 `NUM_STACKS` and `RESOURCES_PER_STACK` environment variables, so any app can be
@@ -133,7 +133,7 @@ hyperfine --warmup 1 --runs 5 --prepare 'rm -rf cdk.out' \
 
 ## Notes
 
-- app-2 synthesizes 160,000 resources; its runs are significantly slower. Drop
+- app-3 synthesizes 160,000 resources; its runs are significantly slower. Drop
   `--runs` to 3 (or fewer) if a full benchmark takes too long.
 - Each stack holds exactly 400 resources. CloudFormation caps stacks at 500
   resources, and `app.py` sets `analytics_reporting=False` to drop the
