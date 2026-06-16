@@ -107,15 +107,15 @@ hyperfine \
   'NUM_STACKS={n} python3 app.py'
 ```
 
-### Comparing apps
+## Comparing apps
 
-# Generate lazy-loading version (source only)
+### Generate lazy-loading version (source only)
 ```bash
 node packages/jsii-pacmak/bin/jsii-pacmak ~/aws-cdk/packages/aws-cdk-lib \
   --code-only --no-fingerprint --target python
 ```
 
-# Install into your project
+### Install into your project
 ```bash
 cd ~/cdk-python-project
 source .venv/bin/activate
