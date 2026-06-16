@@ -109,6 +109,15 @@ hyperfine \
 
 ### Comparing apps
 
+# Generate lazy-loading version (source only)
+node packages/jsii-pacmak/bin/jsii-pacmak ~/aws-cdk/packages/aws-cdk-lib \
+  --code-only --no-fingerprint --target python
+
+# Install into your project
+cd ~/cdk-python-project
+source .venv/bin/activate
+pip install --no-deps --force-reinstall ~/aws-cdk/packages/aws-cdk-lib/dist/python/
+
 Run each app's benchmark from its own folder, then compare the reported means. To
 export results for later analysis, add `--export-markdown` or `--export-json`:
 
