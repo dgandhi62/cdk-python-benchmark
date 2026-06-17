@@ -149,7 +149,11 @@ node ~/jsii/packages/jsii-pacmak/bin/jsii-pacmak \
 ```bash
 cd ~/cdk-python-project
 source .venv/bin/activate
+# 2. Swap aws-cdk-lib to your local lazy bindings (deps already satisfied)
 pip install --no-deps --force-reinstall ~/aws-cdk/packages/aws-cdk-lib/dist/python/
+
+# 3. Swap jsii to your local branch runtime (provides _memoized etc.)
+pip install --no-deps --force-reinstall /Users/gandhya/jsii/packages/@jsii/python-runtime
 ```
 
 Run each app's benchmark from its own folder, then compare the reported means. To
