@@ -141,8 +141,8 @@ per-resource synthesis cost measured by the full-workload benchmarks above.
 
 ### Generate lazy-loading version (source only)
 ```bash
-node packages/jsii-pacmak/bin/jsii-pacmak ~/aws-cdk/packages/aws-cdk-lib \
-  --code-only --no-fingerprint --target python
+node ~/jsii/packages/jsii-pacmak/bin/jsii-pacmak \
+  ~/aws-cdk/packages/aws-cdk-lib --code-only --no-fingerprint --target python
 ```
 
 ### Install into your project
